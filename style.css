@@ -1,0 +1,192 @@
+/* style.css */
+
+/* --- Styles Généraux du Corps de Page --- */
+body {
+    font-family: 'Poppins', sans-serif; /* Simule la police du site Fast Bonus */
+    background-color: #f5f5f5; /* Fond très clair comme Fast Bonus */
+    color: #333; /* Couleur de texte par défaut */
+    margin: 0;
+    padding: 20px;
+    display: flex; /* Utilise flexbox pour l'alignement global */
+    flex-direction: column;
+    align-items: center; /* Centre le contenu horizontalement */
+}
+
+h1 {
+    font-size: 2.5em; /* Grande taille de titre */
+    color: #000;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.description {
+    max-width: 800px;
+    text-align: center;
+    margin-bottom: 40px;
+    font-size: 1.1em;
+    line-height: 1.6;
+    color: #555;
+}
+
+/* --- Grille des Images (Cartes) --- */
+.images-grid {
+    display: flex; /* Utilise flexbox pour organiser les cartes */
+    flex-wrap: wrap; /* Permet aux cartes de passer à la ligne */
+    justify-content: center; /* Centre les cartes dans la grille */
+    gap: 25px; /* Espace entre les cartes */
+    max-width: 1200px; /* Largeur maximale de la grille */
+    margin-top: 20px;
+}
+
+/* --- Conteneur de Chaque Carte --- */
+.card-container {
+    width: 350px; /* Largeur fixe pour chaque carte, comme dans l'exemple */
+    background-color: #2a2a2a; /* Fond sombre de la carte */
+    border-radius: 12px; /* Bords plus arrondis */
+    overflow: hidden; /* Important pour que l'image déborde bien au-dessus */
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2); /* Ombre plus prononcée */
+    position: relative; /* Pour positionner l'image en absolu */
+    padding-top: 150px; /* Espace pour l'image qui remonte */
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    color: #fff; /* Texte blanc sur fond sombre */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end; /* Aligne le contenu vers le bas */
+}
+
+.card-container:hover {
+    transform: translateY(-8px); /* Effet de soulèvement au survol */
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.3);
+}
+
+/* --- Positionnement de l'Image pour l'Effet de Débordement --- */
+.card-image-wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 180px; /* Hauteur de l'espace pour l'image qui déborde */
+    display: flex;
+    justify-content: center;
+    align-items: flex-end; /* Pour que le bas de l'image rejoigne le haut de la carte */
+    overflow: hidden; 
+}
+
+.card-image-wrapper img {
+    /* Ces styles seront écrasés par les ID spécifiques ci-dessous */
+    width: 120%; 
+    height: auto;
+    object-fit: cover; 
+    position: absolute;
+    bottom: -20px; 
+    left: -10%; 
+    transform: scale(1.1); 
+    filter: drop-shadow(0 0 15px rgba(0,0,0,0.5)); /* Ombre sur l'image elle-même */
+}
+
+/* --- Contenu de Texte de la Carte --- */
+.card-content {
+    padding: 20px;
+    padding-top: 10px; 
+    text-align: left;
+    position: relative; 
+    z-index: 10;
+}
+
+.card-title {
+    font-size: 1.3em;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #eee;
+}
+
+.card-details {
+    font-size: 1.1em;
+    font-weight: bold;
+    margin-bottom: 15px;
+    color: #fff;
+}
+
+.card-details span {
+    display: block;
+    margin-top: 5px;
+}
+
+/* --- Style du Bouton d'Action --- */
+.action-button {
+    display: block;
+    width: calc(100% - 40px); /* Prend presque toute la largeur du contenu */
+    padding: 12px 20px;
+    background-color: #007bff; /* Couleur de base */
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: bold;
+    transition: background-color 0.3s ease-in-out;
+    margin-top: 20px;
+}
+
+.action-button:hover {
+    background-color: #0056b3;
+}
+
+
+/* ------------------------------------------- */
+/* --- STYLES SPÉCIFIQUES À CHAQUE BANNIÈRE --- */
+/* ------------------------------------------- */
+
+/* 1. DISCORD (didi.jpg) */
+#card-didi .card-image-wrapper img {
+    content: url('images/didi.jpg');
+    bottom: -20px;
+    left: -10%;
+    transform: scale(1.1);
+}
+#card-didi .action-button { background-color: #7289da; } /* Couleur Discord */
+#card-didi .action-button:hover { background-color: #677bc4; }
+
+/* 2. BLU VEGAS (blu.jpg) */
+#card-blu .card-image-wrapper img {
+    content: url('images/blu.jpg');
+    bottom: -20px;
+    left: -10%;
+    transform: scale(1.1);
+}
+#card-blu .action-button { background-color: #007bff; } 
+#card-blu .action-button:hover { background-color: #0056b3; }
+
+/* 3. KRYPTOSINO (kryptozino.jpg) */
+#card-kryptozino .card-image-wrapper img {
+    content: url('images/kryptozino.jpg');
+    bottom: -20px;
+    left: -10%;
+    transform: scale(1.1);
+}
+#card-kryptozino .action-button { background-color: #ff3366; } /* Rouge vif */
+#card-kryptozino .action-button:hover { background-color: #cc0033; }
+
+/* 4. MEGA DICE (megadice.jpg) */
+#card-megadice .card-image-wrapper img {
+    content: url('images/megadice.jpg');
+    bottom: -20px;
+    left: -10%;
+    transform: scale(1.1);
+}
+#card-megadice .action-button { background-color: #28a745; } /* Vert */
+#card-megadice .action-button:hover { background-color: #218838; }
+
+
+/* --- Media Queries (Responsivité) --- */
+@media (max-width: 768px) {
+    .card-container {
+        width: 100%; /* Les cartes prennent toute la largeur sur mobile */
+        max-width: 350px; /* Limite la largeur même sur 100% */
+    }
+    h1 {
+        font-size: 2em;
+    }
+    .description {
+        font-size: 1em;
+    }
+}

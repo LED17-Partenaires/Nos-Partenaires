@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nos Partenaires</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        /*
+        *************************************************
+        * CODE CSS OPTIMISÉ POUR MOBILE (iPhone/Android)
+        *************************************************
+        */
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+            margin: 0;
+            padding: 0; 
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* --- En-tête (Header) --- */
+        .main-header {
+            width: 100%;
+            background-color: #fff;
+            padding: 15px 20px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo {
+            font-size: 1.8em;
+            font-weight: 700;
+            color: #007bff; 
+            text-decoration: none; 
+        }
+
+        /* --- Contenu Principal de la Page --- */
+        .main-content {
+            padding: 20px;
+            text-align: center; 
+            max-width: 1200px; 
+            width: 100%;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            color: #000;
+            margin-bottom: 10px;
+            margin-top: 40px; 
+            text-align: center;
+        }
+
+        .description {
+            max-width: 800px;
+            margin: 0 auto 40px auto; 
+            font-size: 1.1em;
+            line-height: 1.6;
+            color: #555;
+        }
+
+        .images-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            /* Augmente l'espace pour que les cartes ne soient pas collées */
+            gap: 20px; 
+            margin-top: 20px;
+        }
+
+        /* --- Conteneur de Chaque Carte (Lien Cliquable) --- */
+        .card-container {
+            width: 350px;
+            background-color: #2a2a2a; 
+            border-radius: 12px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+            color: #fff;
+            text-decoration: none; 
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card-container:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.3);
+        }
+        
+        /* --- Zone de l'Image (Haut de la carte) --- */
+        .card-image {
+            width: 100%;
+            height: 180px; 
+            overflow: hidden;
+            border-top-left-radius: 12px;
+            border-top-right-radius: 12px;
+        }
+
+        .card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; 
+            display: block;
+        }
+
+        /* --- Contenu de Texte de la Carte --- */
+        .card-content {
+            padding: 20px;
+            text-align: left;
+        }
+
+        .card-title {
+            font-size: 1.3em;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #eee;
+        }
+
+        .card-details {
+            font-size: 1.1em;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: #fff;
+        }
+
+        .card-details span {
+            display: block;
+            margin-top: 5px;
+        }
+
+        /* --- Style du Bouton d'Action (dans la carte) --- */
+        .action-button {
+            display: block;
+            width: 100%;
+            padding: 12px 0;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: bold;
+            transition: background-color 0.3s ease-in-out;
+            margin-top: 20px;
+        }
+        
+        /* Couleurs des boutons */
+        #card-didi .action-button { background-color: #7289da; color: white; } 
+        #card-didi .action-button:hover { background-color: #677bc4; }
+
+        #card-blu .action-button { background-color: #007bff; color: white; } 
+        #card-blu .action-button:hover { background-color: #0056b3; }
+
+        #card-kryptozino .action-button { background-color: #ff3366; color: white; } 
+        #card-kryptozino .action-button:hover { background-color: #cc0033; }
+
+        #card-megadice .action-button { background-color: #28a745; color: white; } 
+        #card-megadice .action-button:hover { background-color: #218838; }
+
+        /* ----------------------------------------------------- */
+        /* --- MEDIA QUERIES (OPTIMISATION POUR PETITS ÉCRANS) --- */
+        /* ----------------------------------------------------- */
+        @media (max-width: 768px) {
+            /* Le logo se centre sur mobile */
+            .main-header {
+                justify-content: center; 
+                padding: 10px 15px; /* Moins de padding */
+            }
+            .logo {
+                font-size: 1.5em; /* Taille du logo réduite */
+            }
+            .main-content {
+                padding: 15px; /* Moins de padding sur les côtés */
+            }
+            /* Taille du titre principal réduite */
+            h1 {
+                font-size: 2em;
+                margin-top: 20px;
+            }
+            /* Description plus compacte */
+            .description {
+                font-size: 1em;
+                margin-bottom: 25px;
+            }
+            /* Les cartes prennent toute la largeur disponible pour être bien lisibles */
+            .card-container {
+                width: 100%;
+                max-width: 350px; /* Limite maximale maintenue */
+            }
+            .card-title {
+                font-size: 1.2em; /* Taille du titre de la carte réduite */
+            }
+            .card-details {
+                font-size: 1em; /* Taille du texte de la carte réduite */
+            }
+        }
+    </style>
+</head>
+<body>
+    
+    <header class="main-header">
+        <a href="#" class="logo">LED17</a> 
+    </header>
+
+    <div class="main-content">
+        <h1>Nos Partenaires</h1>
+        
+        <p class="description">
+            Ne manquez pas cette chance unique ! Plongez dans l'aventure et débloquez des offres exclusives
+            que vous ne trouverez nulle part ailleurs. Cliquez pour transformer votre expérience de jeu !
+        </p>
+
+        <div class="images-grid">
+            
+            <a href="https://discord.gg/CW4zHhMXZr" class="card-container" id="card-didi" target="_blank">
+                <div class="card-image">
+                    <img src="https://i.ibb.co/mkP8VXp/didi.png" alt="Rejoins le Discord des Giveaways">
+                </div>
+                <div class="card-content">
+                    <div class="card-title">Rejoins notre Discord</div>
+                    <div class="card-details">Giveaways quotidiens <br> Offres exclusives</div>
+                    <div class="action-button">Rejoindre le Discord</div>
+                </div>
+            </a>
+
+            <a href="http://bit.ly/4oh0lxe" class="card-container" id="card-blu" target="_blank">
+                <div class="card-image">
+                    <img src="https://i.ibb.co/JWKwrzPY/blu.png" alt="Offre Blu Vegas"> 
+                </div>
+                <div class="card-content">
+                    <div class="card-title">Blu Vegas Casino</div>
+                    <div class="card-details">
+                        **100% BONUS** <br> 100 FREE SPINS <br> +20% CASHBACK MENSUEL
+                    </div>
+                    <div class="action-button">Découvrir l'offre</div>
+                </div>
+            </a>
+
+            <a href="http://bit.ly/4lHLaeu" class="card-container" id="card-kryptozino" target="_blank">
+                <div class="card-image">
+                    <img src="https://i.ibb.co/tMm5WgP7/kryptozino.png" alt="Offre Kryptosino">
+                </div>
+                <div class="card-content">
+                    <div class="card-title">Kryptosino</div>
+                    <div class="card-details">
+                        **100% BONUS** <br> Jusqu'à 500$ <br> *(Wager Free)*
+                    </div>
+                    <div class="action-button">Découvrir l'offre</div>
+                </div>
+            </a>
+
+            <a href="https://bit.ly/3JjpRmm" class="card-container" id="card-megadice" target="_blank">
+                <div class="card-image">
+                    <img src="https://i.ibb.co/CpdRzJVJ/megadice.png" alt="Offre Mega Dice">
+                </div>
+                <div class="card-content">
+                    <div class="card-title">Mega Dice Casino</div>
+                    <div class="card-details">
+                        **200% BONUS** <br> Jusqu'à 1 BTC <br> +50 FREE SPINS
+                    </div>
+                    <div class="action-button">Découvrir l'offre</div>
+                </div>
+            </a>
+
+        </div>
+    </div> 
+
+</body>
+</html>
