@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nos Partenaires</title>
+    <title>LeD17 | Partenaires & Bonus Exclusifs</title>
     
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 
     <style>
         /*
         *************************************************
-        * CODE CSS OPTIMISÉ POUR MOBILE (iPhone/Android)
+        * CODE CSS OPTIMISÉ (FINAL)
         *************************************************
         */
         body {
@@ -31,7 +31,8 @@
             padding: 15px 20px;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
             display: flex;
-            justify-content: space-between;
+            /* Changement: Justifie le contenu au centre */
+            justify-content: center; 
             align-items: center;
             position: sticky;
             top: 0;
@@ -43,14 +44,60 @@
             font-weight: 700;
             color: #007bff; 
             text-decoration: none; 
+            /* Rétabli pour le centrage : le logo est décalé pour ne pas briser la barre */
+            position: absolute; 
+            left: 20px; 
+        }
+        
+        /* ----------------------------------------------------------------------------------- */
+        /* --- STYLE DE BARRE DE NAVIGATION --- */
+        /* ----------------------------------------------------------------------------------- */
+
+        .nav-container {
+            /* Le conteneur entier qui donne la forme "pilule" à la barre */
+            background-color: #f0f0f0; /* Gris clair */
+            border-radius: 35px; /* Coins très arrondis */
+            padding: 5px; 
+            display: flex;
+            gap: 15px;
+            align-items: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
         }
 
-        /* --- Contenu Principal de la Page --- */
+        .nav-container a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 600;
+            padding: 10px 18px;
+            border-radius: 30px; 
+            transition: background-color 0.3s, color 0.3s;
+            white-space: nowrap; 
+            font-size: 1em;
+        }
+
+        .nav-container a:hover {
+            background-color: #e0e0e0;
+        }
+
+        /* Style spécifique pour le bouton LIVE Dlive (le bouton spécial) */
+        .nav-container .live-button {
+            background-color: #1a1a1a; 
+            color: white;
+            position: relative; 
+            padding: 10px 20px;
+        }
+
+        .nav-container .live-button:hover {
+            background-color: #000;
+        }
+        
+        /* --- Contenu Principal de la Page (Reste inchangé) --- */
         .main-content {
             padding: 20px;
             text-align: center; 
             max-width: 1200px; 
             width: 100%;
+            padding-bottom: 20px; 
         }
 
         h1 {
@@ -63,22 +110,34 @@
 
         .description {
             max-width: 800px;
-            margin: 0 auto 40px auto; 
+            margin: 0 auto 10px auto; 
             font-size: 1.1em;
             line-height: 1.6;
             color: #555;
+        }
+        
+        /* Lien FAQ sous la description */
+        .faq-link-container {
+            margin-top: 15px; 
+            margin-bottom: 40px;
+        }
+
+        .section-subtitle {
+            font-size: 1.8em;
+            color: #000;
+            margin-top: 40px;
+            margin-bottom: 30px;
         }
 
         .images-grid {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            /* Augmente l'espace pour que les cartes ne soient pas collées */
             gap: 20px; 
             margin-top: 20px;
         }
 
-        /* --- Conteneur de Chaque Carte (Lien Cliquable) --- */
+        /* --- Styles des Cartes (inchangés) --- */
         .card-container {
             width: 350px;
             background-color: #2a2a2a; 
@@ -96,7 +155,6 @@
             box-shadow: 0 12px 35px rgba(0, 0, 0, 0.3);
         }
         
-        /* --- Zone de l'Image (Haut de la carte) --- */
         .card-image {
             width: 100%;
             height: 180px; 
@@ -112,10 +170,9 @@
             display: block;
         }
 
-        /* --- Contenu de Texte de la Carte --- */
         .card-content {
             padding: 20px;
-            text-align: left;
+            text-align: center; 
         }
 
         .card-title {
@@ -137,7 +194,6 @@
             margin-top: 5px;
         }
 
-        /* --- Style du Bouton d'Action (dans la carte) --- */
         .action-button {
             display: block;
             width: 100%;
@@ -150,7 +206,7 @@
             margin-top: 20px;
         }
         
-        /* Couleurs des boutons */
+        /* Couleurs des boutons de la grille */
         #card-didi .action-button { background-color: #7289da; color: white; } 
         #card-didi .action-button:hover { background-color: #677bc4; }
 
@@ -163,41 +219,50 @@
         #card-megadice .action-button { background-color: #28a745; color: white; } 
         #card-megadice .action-button:hover { background-color: #218838; }
 
+
         /* ----------------------------------------------------- */
         /* --- MEDIA QUERIES (OPTIMISATION POUR PETITS ÉCRANS) --- */
         /* ----------------------------------------------------- */
         @media (max-width: 768px) {
-            /* Le logo se centre sur mobile */
             .main-header {
-                justify-content: center; 
-                padding: 10px 15px; /* Moins de padding */
+                flex-direction: column;
+                padding: 10px 15px; 
             }
             .logo {
-                font-size: 1.5em; /* Taille du logo réduite */
+                font-size: 1.5em; 
+                margin-right: 0;
+                margin-bottom: 10px;
+                position: static;
+            }
+            .nav-container {
+                gap: 5px;
+                padding: 5px;
+                width: 100%;
+                justify-content: center;
+                border-radius: 20px;
+            }
+            .nav-container a {
+                padding: 8px 12px;
+                font-size: 0.8em;
             }
             .main-content {
-                padding: 15px; /* Moins de padding sur les côtés */
+                padding: 15px; 
             }
-            /* Taille du titre principal réduite */
             h1 {
                 font-size: 2em;
                 margin-top: 20px;
             }
-            /* Description plus compacte */
             .description {
                 font-size: 1em;
-                margin-bottom: 25px;
+                margin-bottom: 10px; 
             }
-            /* Les cartes prennent toute la largeur disponible pour être bien lisibles */
+            .section-subtitle {
+                margin-top: 20px;
+                margin-bottom: 20px;
+            }
             .card-container {
                 width: 100%;
-                max-width: 350px; /* Limite maximale maintenue */
-            }
-            .card-title {
-                font-size: 1.2em; /* Taille du titre de la carte réduite */
-            }
-            .card-details {
-                font-size: 1em; /* Taille du texte de la carte réduite */
+                max-width: 350px; 
             }
         }
     </style>
@@ -206,6 +271,16 @@
     
     <header class="main-header">
         <a href="#" class="logo">LED17</a> 
+        
+        <nav class="nav-container">
+            <a href="index.html">CASINOS</a> 
+
+            <a href="https://www.youtube.com/@LeD17stream" target="_blank">▶️ YOUTUBE</a>
+
+            <a href="faq.html">FAQ</a>
+
+            <a href="https://dlive.tv/LeD17" target="_blank" class="live-button">🔴 LIVE Dlive</a>
+        </nav>
     </header>
 
     <div class="main-content">
@@ -215,6 +290,14 @@
             Ne manquez pas cette chance unique ! Plongez dans l'aventure et débloquez des offres exclusives
             que vous ne trouverez nulle part ailleurs. Cliquez pour transformer votre expérience de jeu !
         </p>
+        
+        <div class="faq-link-container">
+            <a href="faq.html" style="color: #007bff; font-weight: 600; text-decoration: none; border-bottom: 1px dashed #007bff;">
+                ❓ Explications sur les Bonus, le Wager et les Conditions
+            </a>
+        </div>
+        
+        <h2 class="section-subtitle">Découvrez nos Offres Exclusives :</h2>
 
         <div class="images-grid">
             
@@ -236,7 +319,7 @@
                 <div class="card-content">
                     <div class="card-title">Blu Vegas Casino</div>
                     <div class="card-details">
-                        **100% BONUS** <br> 100 FREE SPINS <br> +20% CASHBACK MENSUEL
+                        **100% BONUS** <br> 100 FREE SPINS <br> +20% CASHBACK MENSUEL <br> *(Bonus No Sticky)*
                     </div>
                     <div class="action-button">Découvrir l'offre</div>
                 </div>
@@ -262,7 +345,7 @@
                 <div class="card-content">
                     <div class="card-title">Mega Dice Casino</div>
                     <div class="card-details">
-                        **200% BONUS** <br> Jusqu'à 1 BTC <br> +50 FREE SPINS
+                        **200% BONUS** <br> Jusqu'à 1 BTC <br> +50 FREE SPINS <br> *(Bonus No Sticky)*
                     </div>
                     <div class="action-button">Découvrir l'offre</div>
                 </div>
@@ -270,6 +353,6 @@
 
         </div>
     </div> 
-
+    
 </body>
 </html>
