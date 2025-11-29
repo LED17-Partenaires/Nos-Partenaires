@@ -10,28 +10,133 @@
     <style>
         /*
         *************************************************
-        * CODE CSS OPTIMISÉ (FINAL)
+        * CODE CSS OPTIMISÉ (FINAL : MODE SOMBRE + DECORATIONS + NEIGE SANS BLOCAGE)
         *************************************************
         */
         body {
             font-family: 'Poppins', sans-serif;
-            background-color: #f5f5f5;
-            color: #333;
+            background-color: #1a1a1a; 
+            color: #f0f0f0; 
             margin: 0;
             padding: 0; 
             display: flex;
             flex-direction: column;
             align-items: center;
+            overflow-x: hidden;
+            position: relative;
         }
 
+        /* ----------------------------------------------------------------------------------- */
+        /* --- PILE DE CADEAUX EN ARRIÈRE-PLAN (GAUCHE) --- */
+        /* ----------------------------------------------------------------------------------- */
+        #christmas-presents {
+            position: fixed;
+            left: 0; 
+            bottom: 0; 
+            width: 350px; 
+            height: 350px; 
+            z-index: -2; 
+            background-image: url('https://i.ibb.co/RpkYCGck/Gemini-Generated-Image-fgrymefgrymefgry-Photoroom.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: bottom left; 
+            opacity: 0.35; 
+            pointer-events: none; 
+            transition: width 0.3s, height 0.3s;
+        }
+
+        /* ----------------------------------------------------------------------------------- */
+        /* --- SAPIN DE NOËL EN ARRIÈRE-PLAN (DROITE) --- */
+        /* ----------------------------------------------------------------------------------- */
+        #christmas-tree {
+            position: fixed;
+            right: 0; 
+            bottom: 0; 
+            width: 400px; 
+            height: 700px; 
+            z-index: -2; 
+            background-image: url('https://i.ibb.co/JR7WL3Qj/0239d488-da36-4f64-a6b8-4bb0495d8dab-Photoroom.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: bottom right;
+            opacity: 0.35; 
+            pointer-events: none; 
+            transition: width 0.3s, height 0.3s;
+        }
+        
+        /* ----------------------------------------------------------------------------------- */
+        /* --- EFFET NEIGE ALÉATOIRE EN CSS (Trois Couches Dégagées) --- */
+        /* ----------------------------------------------------------------------------------- */
+        
+        /* Animation pour la chute de la neige */
+        @keyframes snowfall {
+            0% { transform: translateY(-100vh); }
+            100% { transform: translateY(100vh); }
+        }
+
+        /* ------------------- COUCHE 1 : Très petite et très lente ------------------- */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            z-index: -1;
+            /* Flocons très petits (r=0.5) et très transparents (0.4) */
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='10' cy='10' r='0.5' fill='rgba(255, 255, 255, 0.4)'/%3E%3Ccircle cx='30' cy='50' r='0.5' fill='rgba(255, 255, 255, 0.4)'/%3E%3Ccircle cx='60' cy='20' r='0.5' fill='rgba(255, 255, 255, 0.4)'/%3E%3Ccircle cx='80' cy='70' r='0.5' fill='rgba(255, 255, 255, 0.4)'/%3E%3C/svg%3E");
+            background-size: 150px 150px; 
+            background-repeat: repeat;
+            
+            /* DÉMARRAGE ALÉATOIRE CORRIGÉ */
+            animation: snowfall 25s linear infinite; 
+            animation-delay: -5s; 
+        }
+        
+        /* ------------------- COUCHE 2 : Taille moyenne et vitesse modérée ------------------- */
+        body::after {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            z-index: -1;
+            /* Flocons un peu plus grands (r=1) et un peu plus visibles (0.6) */
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='20' cy='40' r='1' fill='rgba(255, 255, 255, 0.6)'/%3E%3Ccircle cx='50' cy='80' r='1' fill='rgba(255, 255, 255, 0.6)'/%3E%3Ccircle cx='90' cy='10' r='1' fill='rgba(255, 255, 255, 0.6)'/%3E%3C/svg%3E");
+            background-size: 100px 100px; 
+            background-repeat: repeat;
+            
+            /* DÉMARRAGE ALÉATOIRE CORRIGÉ */
+            animation: snowfall 18s linear infinite; 
+            animation-delay: -10s; 
+        }
+
+        /* ------------------- COUCHE 3 : Flocons les plus grands et plus rapides ------------------- */
+        #snow-layer-3 {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            z-index: -1;
+            /* Flocons plus grands (r=1.5) et plus visibles (0.8) */
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='10' cy='80' r='1.5' fill='rgba(255, 255, 255, 0.8)'/%3E%3Ccircle cx='40' cy='20' r='1.5' fill='rgba(255, 255, 255, 0.8)'/%3E%3Ccircle cx='70' cy='60' r='1.5' fill='rgba(255, 255, 255, 0.8)'/%3E%3C/svg%3E");
+            background-size: 80px 80px; 
+            background-repeat: repeat;
+            
+            /* DÉMARRAGE ALÉATOIRE CORRIGÉ */
+            animation: snowfall 12s linear infinite; 
+            animation-delay: -15s; 
+        }
+        
         /* --- En-tête (Header) --- */
         .main-header {
             width: 100%;
-            background-color: #fff;
+            background-color: #222; 
             padding: 15px 20px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5); 
             display: flex;
-            /* Changement: Justifie le contenu au centre */
             justify-content: center; 
             align-items: center;
             position: sticky;
@@ -44,9 +149,17 @@
             font-weight: 700;
             color: #007bff; 
             text-decoration: none; 
-            /* Rétabli pour le centrage : le logo est décalé pour ne pas briser la barre */
             position: absolute; 
             left: 20px; 
+            display: flex; 
+            align-items: center;
+            gap: 5px; 
+        }
+
+        .santa-icon {
+            height: 35px;
+            width: auto;
+            display: block; 
         }
         
         /* ----------------------------------------------------------------------------------- */
@@ -54,19 +167,18 @@
         /* ----------------------------------------------------------------------------------- */
 
         .nav-container {
-            /* Le conteneur entier qui donne la forme "pilule" à la barre */
-            background-color: #f0f0f0; /* Gris clair */
-            border-radius: 35px; /* Coins très arrondis */
+            background-color: #333; 
+            border-radius: 35px;
             padding: 5px; 
             display: flex;
             gap: 15px;
             align-items: center;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
         }
 
         .nav-container a {
             text-decoration: none;
-            color: #333;
+            color: #fff; 
             font-weight: 600;
             padding: 10px 18px;
             border-radius: 30px; 
@@ -76,22 +188,21 @@
         }
 
         .nav-container a:hover {
-            background-color: #e0e0e0;
+            background-color: #444; 
         }
 
-        /* Style spécifique pour le bouton LIVE Dlive (le bouton spécial) */
         .nav-container .live-button {
-            background-color: #1a1a1a; 
+            background-color: #007bff; 
             color: white;
             position: relative; 
             padding: 10px 20px;
         }
 
         .nav-container .live-button:hover {
-            background-color: #000;
+            background-color: #0056b3; 
         }
         
-        /* --- Contenu Principal de la Page (Reste inchangé) --- */
+        /* --- Contenu Principal de la Page --- */
         .main-content {
             padding: 20px;
             text-align: center; 
@@ -102,7 +213,7 @@
 
         h1 {
             font-size: 2.5em;
-            color: #000;
+            color: #fff; 
             margin-bottom: 10px;
             margin-top: 40px; 
             text-align: center;
@@ -113,7 +224,10 @@
             margin: 0 auto 10px auto; 
             font-size: 1.1em;
             line-height: 1.6;
-            color: #555;
+            color: #ccc; 
+            font-weight: 600; 
+            line-height: 1.8;
+            margin-top: 20px;
         }
         
         /* Lien FAQ sous la description */
@@ -122,9 +236,14 @@
             margin-bottom: 40px;
         }
 
+        .faq-link-container a {
+            color: #4a90e2 !important; 
+            border-bottom: 1px dashed #4a90e2 !important;
+        }
+
         .section-subtitle {
             font-size: 1.8em;
-            color: #000;
+            color: #fff; 
             margin-top: 40px;
             margin-bottom: 30px;
         }
@@ -137,12 +256,12 @@
             margin-top: 20px;
         }
 
-        /* --- Styles des Cartes (inchangés) --- */
+        /* --- Styles des Cartes --- */
         .card-container {
             width: 350px;
             background-color: #2a2a2a; 
             border-radius: 12px;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4); 
             transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
             color: #fff;
             text-decoration: none; 
@@ -152,12 +271,12 @@
 
         .card-container:hover {
             transform: translateY(-8px);
-            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.6);
         }
         
         .card-image {
             width: 100%;
-            height: 180px; 
+            height: 180px;
             overflow: hidden;
             border-top-left-radius: 12px;
             border-top-right-radius: 12px;
@@ -206,7 +325,35 @@
             margin-top: 20px;
         }
         
-        /* Couleurs des boutons de la grille */
+        /* --------------------------------------------- */
+        /* --- STYLES XXL (818px x 323px) --- */
+        /* --------------------------------------------- */
+
+        /* Styles pour Trickz (Carte 1 XXL) */
+        #card-trickz {
+            width: 818px; 
+        }
+        #card-trickz .card-image {
+            height: 323px; 
+        }
+
+        /* Styles pour Vegaz (Carte 2 XXL) */
+        #card-vegaz {
+            width: 818px; 
+        }
+        #card-vegaz .card-image {
+            height: 323px; 
+        }
+
+        /* Styles pour Depositwin (Carte 3 XXL) */
+        #card-depositwin {
+            width: 818px; 
+        }
+        #card-depositwin .card-image {
+            height: 323px; 
+        }
+
+        /* Couleurs des boutons */
         #card-didi .action-button { background-color: #7289da; color: white; } 
         #card-didi .action-button:hover { background-color: #677bc4; }
 
@@ -219,11 +366,43 @@
         #card-megadice .action-button { background-color: #28a745; color: white; } 
         #card-megadice .action-button:hover { background-color: #218838; }
 
+        #card-trickz .action-button { background-color: #00bcd4; color: white; } 
+        #card-trickz .action-button:hover { background-color: #0097a7; }
+        
+        #card-vegaz .action-button { background-color: #FFC107; color: #333; } 
+        #card-vegaz .action-button:hover { background-color: #FFB300; }
+
+        #card-depositwin .action-button { background-color: #8A2BE2; color: white; } 
+        #card-depositwin .action-button:hover { background-color: #6A1BAA; }
+
 
         /* ----------------------------------------------------- */
         /* --- MEDIA QUERIES (OPTIMISATION POUR PETITS ÉCRANS) --- */
         /* ----------------------------------------------------- */
-        @media (max-width: 768px) {
+        @media (max-width: 850px) {
+            /* Sur petit écran, les cartes XXL redeviennent de taille standard */
+            #card-trickz, #card-depositwin, #card-vegaz { 
+                width: 100%;
+                max-width: 350px; 
+            }
+            #card-trickz .card-image, #card-depositwin .card-image, #card-vegaz .card-image { 
+                height: 180px; 
+            }
+            
+            /* Ajustement des décorations pour mobile */
+             #christmas-tree {
+                width: 250px;
+                height: 450px;
+                opacity: 0.2; 
+            }
+
+            #christmas-presents {
+                width: 200px;
+                height: 200px;
+                opacity: 0.2; 
+            }
+
+            /* Styles mobile classiques */
             .main-header {
                 flex-direction: column;
                 padding: 10px 15px; 
@@ -233,6 +412,8 @@
                 margin-right: 0;
                 margin-bottom: 10px;
                 position: static;
+                justify-content: center;
+                left: initial;
             }
             .nav-container {
                 gap: 5px;
@@ -269,8 +450,17 @@
 </head>
 <body>
     
+    <div id="christmas-presents"></div>
+
+    <div id="christmas-tree"></div>
+
+    <div id="snow-layer-3"></div>
+
     <header class="main-header">
-        <a href="#" class="logo">LED17</a> 
+        <a href="#" class="logo">
+            LED17 
+            <img src="https://i.ibb.co/TB8vShws/pngtree-tiny-santa-big-christmas-spirit-png-image-14101547-Photoroom.png" alt="Père Noël" class="santa-icon">
+        </a>
         
         <nav class="nav-container">
             <a href="index.html">CASINOS</a> 
@@ -287,12 +477,15 @@
         <h1>Nos Partenaires</h1>
         
         <p class="description">
-            Ne manquez pas cette chance unique ! Plongez dans l'aventure et débloquez des offres exclusives
-            que vous ne trouverez nulle part ailleurs. Cliquez pour transformer votre expérience de jeu !
+            Toute l'équipe LeD17 vous souhaite d'excellentes fêtes de fin d'année !
+            <br>
+            Pour célébrer cette saison de magie, nous avons préparé le meilleur des bonus et des surprises exclusives pour vous.
+            <br>
+            Ouvrez vos cadeaux en cliquant sur nos offres ! 🎁
         </p>
         
         <div class="faq-link-container">
-            <a href="faq.html" style="color: #007bff; font-weight: 600; text-decoration: none; border-bottom: 1px dashed #007bff;">
+            <a href="faq.html" style="color: #4a90e2; font-weight: 600; text-decoration: none; border-bottom: 1px dashed #4a90e2;">
                 ❓ Explications sur les Bonus, le Wager et les Conditions
             </a>
         </div>
@@ -301,6 +494,45 @@
 
         <div class="images-grid">
             
+            <a href="https://bit.ly/LeD17Trickz" class="card-container" id="card-trickz" target="_blank">
+                <div class="card-image">
+                    <img src="https://i.ibb.co/srV5FZx/imzdzage.jpg" alt="Offre Trickz Casino">
+                </div>
+                <div class="card-content">
+                    <div class="card-title">Trickz Casino</div>
+                    <div class="card-details">
+                        250% BONUS <br> + 200 FREE SPINS <br> + 20% CASHBACK <br> *(Bonus No Sticky)*
+                    </div>
+                    <div class="action-button">Découvrir l'offre</div>
+                </div>
+            </a>
+
+            <a href="https://www.vegazcasino555.com/referral/mPihRKuQq3rEkigd" class="card-container" id="card-vegaz" target="_blank">
+                <div class="card-image">
+                    <img src="https://i.ibb.co/pkxGLw5/image.jpg" alt="Offre Vegaz Casino">
+                </div>
+                <div class="card-content">
+                    <div class="card-title">Vegaz Casino</div>
+                    <div class="card-details">
+                        250% BONUS <br> + 200 FREE SPINS <br> + 20% CASHBACK <br> *(Bonus No Sticky)*
+                    </div>
+                    <div class="action-button">Découvrir l'offre</div>
+                </div>
+            </a>
+
+            <a href="https://www.depositwin.com/referral/JD5WYGtffGXK0Rnt" class="card-container" id="card-depositwin" target="_blank">
+                <div class="card-image">
+                    <img src="https://i.ibb.co/BHBDwzND/image-778.jpg" alt="Offre Depositwin">
+                </div>
+                <div class="card-content">
+                    <div class="card-title">Depositwin Casino</div>
+                    <div class="card-details">
+                        300% BONUS <br> + 300 FREE SPINS <br> *(Bonus No Sticky)*
+                    </div>
+                    <div class="action-button">Découvrir l'offre</div>
+                </div>
+            </a>
+
             <a href="https://discord.gg/CW4zHhMXZr" class="card-container" id="card-didi" target="_blank">
                 <div class="card-image">
                     <img src="https://i.ibb.co/mkP8VXp/didi.png" alt="Rejoins le Discord des Giveaways">
@@ -319,7 +551,7 @@
                 <div class="card-content">
                     <div class="card-title">Blu Vegas Casino</div>
                     <div class="card-details">
-                        **100% BONUS** <br> 100 FREE SPINS <br> +20% CASHBACK MENSUEL <br> *(Bonus No Sticky)*
+                        100% BONUS <br> 100 FREE SPINS <br> +20% CASHBACK MENSUEL <br> *(Bonus No Sticky)*
                     </div>
                     <div class="action-button">Découvrir l'offre</div>
                 </div>
@@ -332,7 +564,7 @@
                 <div class="card-content">
                     <div class="card-title">Kryptosino</div>
                     <div class="card-details">
-                        **100% BONUS** <br> Jusqu'à 500$ <br> *(Wager Free)*
+                        100% BONUS <br> Jusqu'à 500$ <br> *(Wager Free)*
                     </div>
                     <div class="action-button">Découvrir l'offre</div>
                 </div>
@@ -345,7 +577,7 @@
                 <div class="card-content">
                     <div class="card-title">Mega Dice Casino</div>
                     <div class="card-details">
-                        **200% BONUS** <br> Jusqu'à 1 BTC <br> +50 FREE SPINS <br> *(Bonus No Sticky)*
+                        200% BONUS <br> Jusqu'à 1 BTC <br> +50 FREE SPINS <br> *(Bonus No Sticky)*
                     </div>
                     <div class="action-button">Découvrir l'offre</div>
                 </div>
@@ -356,3 +588,7 @@
     
 </body>
 </html>
+    
+</body>
+</html>
+
